@@ -1,0 +1,19 @@
+{
+  "name": "diario-de-estudos-terminal",
+  "version": "1.0.0",
+  "description": "O sistema registrará matéria, horas estudadas, dificuldade e observações. Deverá permitir adicionar, listar, pesquisar e calcular o total de horas.",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/igoov/diario-de-estudos-terminal.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/igoov/diario-de-estudos-terminal/issues"
+  },
+  "homepage": "https://github.com/igoov/diario-de-estudos-terminal#readme"
+}
