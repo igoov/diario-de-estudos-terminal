@@ -21,7 +21,7 @@ function menu() {
             
                 switch (opcao) {
                     case "1":
-                        console.clear();
+                        console.clear(); 
 
                         rl.question("Materia: ", materia => {
                             
@@ -144,6 +144,47 @@ function menu() {
                     });
 
                     case "3":
+                        
+                        rl.question("Digite a materia que deseja pesquisar: ", pesquisa => {
+
+                            let encontrada = false;
+
+                            for (const materia of materias) {
+
+                                if (materia.nome == pesquisa) {
+
+                                    console.log("-------------------------");
+                                    console.log("Matéria:", materia.nome);
+                                    console.log("Horas:", materia.horas);
+                                    console.log("Dificuldade:", materia.dificuldade);
+                                    console.log("Observação:", materia.observacao);
+                                    console.log("-------------------------");
+
+                                    encontrada = true;
+                                }
+                            }
+
+                            if (!encontrada) {
+                                console.log("Materia nao encontrada.");
+                            }
+
+                            rl.question("Aperte 1 para voltar: ", voltar => {
+
+                                switch (voltar) {
+
+                                    case "1":
+                                        console.clear();
+                                        menu();
+                                        break;
+
+                                    default:
+                                        break;
+                                }
+
+                            });
+
+                        });
+
 
                         break;
                         
