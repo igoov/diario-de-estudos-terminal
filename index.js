@@ -1,236 +1,234 @@
 const materias = [];
 
-const readline = require('node:readline'); //funcao da entrada e saida de dados e cria uma vez, utilizadno o rl.question consegue digitar de boa
+const readline = require('node:readline'); // Função de entrada e saída de dados
 
-    const rl = readline.createInterface({
-    input: process.stdin, //input é a entrada, e process.stdin biblioteca do teclado 
-    output: process.stdout, //output é a saida, process.stdout biblioteca de saida do terminak
+const rl = readline.createInterface({
+    input: process.stdin, // Entrada do teclado
+    output: process.stdout, // Saída do terminal
 });
 
 function menu() {
-            console.log ("=========================");
-            console.log ("DIARIO DE ESTUDOS"); 
-            console.log ("========================="); 
-            console.log ("1 - Adicionar materias"); 
-            console.log ("2 - Listar materias"); 
-            console.log ("3 - Pesquisar materias"); 
-            console.log ("4 - Calcular o total de horas"); 
-            console.log ("5 - Sair\n"); 
+    console.log("=========================");
+    console.log("DIARIO DE ESTUDOS");
+    console.log("=========================");
+    console.log("1 - Adicionar materias");
+    console.log("2 - Listar materias");
+    console.log("3 - Pesquisar materias");
+    console.log("4 - Calcular o total de horas");
+    console.log("5 - Sair\n");
 
-            rl.question(`Escolha uma opcao: `, opcao => {
-            
-                switch (opcao) {
-                    case "1":
-                        console.clear(); 
+    rl.question(`Escolha uma opcao: `, opcao => {
 
-                        rl.question("Materia: ", materia => {
-                            
-                            rl.question("Horas estudadas (em h): ", horas_estudadas => {
+        switch (opcao) {
 
-                                const Vhoras_estudadas = horas_estudadas;
+            case "1":
+                console.clear();
 
-                                    console.log("-------------------------")
-                                    console.log ("Qual a dificuldade:");                    
-                                    console.log ("Escolha: 1 - facil");
-                                    console.log ("Escolha: 2 - medio");
-                                    console.log ("Escolha: 3 - dificil");
+                rl.question("Materia: ", materia => {
 
-                                        rl.question("=> ", dificuldade => {
+                    rl.question("Horas estudadas (em h): ", horas_estudadas => {
 
-                                            switch (dificuldade) {
-                                                case "1":
-                        
-                                                    const facil = 1;
-                                                    dificuldade = facil;
-                                                    console.log ("-------------------------");
+                        const Vhoras_estudadas = horas_estudadas;
 
-                                                    break;
-                                            
-                                                case "2":
+                        console.log("-------------------------");
+                        console.log("Qual a dificuldade:");
+                        console.log("Escolha: 1 - facil");
+                        console.log("Escolha: 2 - medio");
+                        console.log("Escolha: 3 - dificil");
 
-                                                    const medio = 2;
+                        rl.question("=> ", dificuldade => {
 
-                                                    dificuldade = medio;
-                                                    console.log ("-------------------------");
+                            switch (dificuldade) {
 
-                                                    break;
-                                                
-                                                case "3":
+                                case "1":
+                                    const facil = 1;
+                                    dificuldade = facil;
+                                    console.log("-------------------------");
+                                    break;
 
-                                                    const dificil = 3;
-                                                    dificuldade = dificil;
-                                                    console.log ("-------------------------");
+                                case "2":
+                                    const medio = 2;
+                                    dificuldade = medio;
+                                    console.log("-------------------------");
+                                    break;
 
-                                                    break;
+                                case "3":
+                                    const dificil = 3;
+                                    dificuldade = dificil;
+                                    console.log("-------------------------");
+                                    break;
+                            }
 
-                                            }      
+                            console.log("Observacao");
+                            console.log("1 - Sim");
+                            console.log("2 - Nao");
 
-                                                console.log("Observacao");
-                                                console.log("1 - Sim");
-                                                console.log("2 - Nao");
+                            rl.question("=> ", obs => {
 
-                                                rl.question("=> ", obs =>{
+                                switch (obs) {
 
-                                                    switch (obs) {
-                                                        case "1":
-                                                            rl.question("Digite: ", escrita => {
+                                    case "1":
+                                        rl.question("Digite: ", escrita => {
 
-                                                                materias.push({
-                                                                    nome: materia,
-                                                                    horas: horas_estudadas,
-                                                                    dificuldade: dificuldade,
-                                                                    observacao: escrita
-                                                                });
+                                            materias.push({
+                                                nome: materia,
+                                                horas: horas_estudadas,
+                                                dificuldade: dificuldade,
+                                                observacao: escrita
+                                            });
 
-                                                                console.clear();
-                                                                console.log ("-------------------------");
-                                                                console.log("Observação e materia armazenada com sucesso!")
-                                                                console.log ("-------------------------");
-                                                                menu();
-                                                                
-                                                            })
-                                                            break;
-                                                        
-                                                        case "2": 
-                                                            
-                                                            materias.push({
-                                                                nome: materia,
-                                                                horas: horas_estudadas,
-                                                                dificuldade: dificuldade,
-                                                                observacao: "Nenhuma"
-                                                            });
-    
+                                            console.clear();
+                                            console.log("-------------------------");
+                                            console.log("Observação e materia armazenada com sucesso!");
+                                            console.log("-------------------------");
 
-                                                            console.clear();
-                                                                console.log("-------------------------");
-                                                                console.log("Matéria armazenada com sucesso!");
-                                                                console.log("-------------------------");
+                                            menu();
+                                        });
 
-                                                            menu();
-                                                    }
-                                                });
+                                        break;
 
-                                        });         
-                            })
+                                    case "2":
+
+                                        materias.push({
+                                            nome: materia,
+                                            horas: horas_estudadas,
+                                            dificuldade: dificuldade,
+                                            observacao: "Nenhuma"
+                                        });
+
+                                        console.clear();
+                                        console.log("-------------------------");
+                                        console.log("Matéria armazenada com sucesso!");
+                                        console.log("-------------------------");
+
+                                        menu();
+
+                                        break;
+                                }
+                            });
                         });
+                    });
+                });
+
+                break;
 
 
-                        break;
-                
-                    case "2":
+            case "2":
 
-                        console.clear();
+                console.clear();
 
-                        for (const materia of materias){
+                for (const materia of materias) {
 
-                                console.log("Matéria:", materia.nome);
-                                console.log("Horas:", materia.horas);
-                                console.log("Dificuldade:", materia.dificuldade);
-                                console.log("Observação:", materia.observacao);
-                                console.log("-------------------------");
+                    console.log("Matéria:", materia.nome);
+                    console.log("Horas:", materia.horas);
+                    console.log("Dificuldade:", materia.dificuldade);
+                    console.log("Observação:", materia.observacao);
+                    console.log("-------------------------");
+                }
 
+                rl.question("Aperte 1 para voltar: ", voltar => {
+
+                    switch (voltar) {
+
+                        case "1":
+                            console.clear();
+                            menu();
+                            break;
+
+                        default:
+                            break;
+                    }
+                });
+
+                break;
+
+
+            case "3":
+
+                console.clear();
+
+                rl.question("Digite a materia que deseja pesquisar: ", pesquisa => {
+
+                    let encontrada = false;
+
+                    for (const materia of materias) {
+
+                        if (materia.nome == pesquisa) {
+
+                            console.log("-------------------------");
+                            console.log("Matéria:", materia.nome);
+                            console.log("Horas:", materia.horas);
+                            console.log("Dificuldade:", materia.dificuldade);
+                            console.log("Observação:", materia.observacao);
+                            console.log("-------------------------");
+
+                            encontrada = true;
                         }
-                        rl.question("Aperte 1 para voltar: ", voltar =>{
+                    }
+
+                    if (!encontrada) {
+                        console.log("Materia nao encontrada.");
+                    }
+
+                    rl.question("Aperte 1 para voltar: ", voltar => {
 
                         switch (voltar) {
+
                             case "1":
-                                
                                 console.clear();
                                 menu();
-                        
+                                break;
+
                             default:
                                 break;
                         }
                     });
+                });
 
-                    break;
-
-                    case "3":
-                        
-                        console.clear();
-
-                        rl.question("Digite a materia que deseja pesquisar: ", pesquisa => {
-
-                            let encontrada = false;
-
-                            for (const materia of materias) {
-
-                                if (materia.nome == pesquisa) {
-
-                                    console.log("-------------------------");
-                                    console.log("Matéria:", materia.nome);
-                                    console.log("Horas:", materia.horas);
-                                    console.log("Dificuldade:", materia.dificuldade);
-                                    console.log("Observação:", materia.observacao);
-                                    console.log("-------------------------");
-
-                                    encontrada = true;
-                                }
-                            }
-
-                            if (!encontrada) {
-                                console.log("Materia nao encontrada.");
-                            }
-
-                            rl.question("Aperte 1 para voltar: ", voltar => {
-
-                                switch (voltar) {
-
-                                    case "1":
-                                        console.clear();
-                                        menu();
-                                        break;
-
-                                    default:
-                                        break;
-                                }
-
-                            });
-
-                        });
+                break;
 
 
-                        break;
-                        
-                    case "4":
+            case "4":
 
-                        console.clear();
-                        
-                        let totalHoras = 0;
+                console.clear();
 
-                        for (const materia of materias) {
+                let totalHoras = 0;
 
-                            totalHoras += Number(materia.horas);
-                        }
+                for (const materia of materias) {
 
-                        console.log("Total de horas estudadas:", totalHoras);
-
-                        rl.question("Aperte 1 para voltar: ", voltar => {
-
-                                switch (voltar) {
-
-                                    case "1":
-                                        console.clear();
-                                        menu();
-                                        break;
-
-                                    default:
-                                        break;
-                                }
-
-                            });
-
-                        break;
-
-                    case "5":
-
-                        rl.close();
-                        
-                        break
-                    default:
-                        break;
+                    totalHoras += Number(materia.horas);
                 }
 
-            });
+                console.log("Total de horas estudadas:", totalHoras);
+
+                rl.question("Aperte 1 para voltar: ", voltar => {
+
+                    switch (voltar) {
+
+                        case "1":
+                            console.clear();
+                            menu();
+                            break;
+
+                        default:
+                            break;
+                    }
+                });
+
+                break;
+
+
+            case "5":
+
+                rl.close();
+
+                break;
+
+
+            default:
+                break;
         }
-menu ();
+    });
+}
+
+menu();
