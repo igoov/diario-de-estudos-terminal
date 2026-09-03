@@ -143,8 +143,12 @@ function menu() {
                         }
                     });
 
+                    break;
+
                     case "3":
                         
+                        console.clear();
+
                         rl.question("Digite a materia que deseja pesquisar: ", pesquisa => {
 
                             let encontrada = false;
@@ -189,6 +193,32 @@ function menu() {
                         break;
                         
                     case "4":
+
+                        console.clear();
+                        
+                        let totalHoras = 0;
+
+                        for (const materia of materias) {
+
+                            totalHoras += Number(materia.horas);
+                        }
+
+                        console.log("Total de horas estudadas:", totalHoras);
+
+                        rl.question("Aperte 1 para voltar: ", voltar => {
+
+                                switch (voltar) {
+
+                                    case "1":
+                                        console.clear();
+                                        menu();
+                                        break;
+
+                                    default:
+                                        break;
+                                }
+
+                            });
 
                         break;
 
